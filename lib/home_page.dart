@@ -1,35 +1,34 @@
-import 'package:my_first_package/my_first_package.dart';
 import 'package:flutter/material.dart';
 
-class CustomerPage extends StatefulWidget {
-  final MainModule module = CustomAppModule();
+import 'customer_page.dart';
 
-  // If you need create a constructor, move the CustomAppModule to inside him
-  // const CustomerPage({Key key, this.module = CustomAppModule()}) : super(key: key);
-
+class HomePage extends StatefulWidget {
   @override
-  _CustomerPageState createState() => _CustomerPageState();
+  _HomePageState createState() => _HomePageState();
 }
 
-class _CustomerPageState extends State<CustomerPage> {
-  @override
-  void initState() {
-    super.initState();
-    Modular.init(widget.module);
-    Modular.debugMode = true;
-  }
-
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return widget.module.bootstrap;
-  }
-
-  @override
-  void dispose() {
-    widget.module.cleanInjects();
-    if (Modular.debugMode) {
-      debugPrint("-- ${widget.module.runtimeType.toString()} DISPOSED");
-    }
-    super.dispose();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('My own home page'),
+        centerTitle: true,
+      ),
+      body: Column(
+        children: [
+          Text('My Home PAge'),
+          MaterialButton(
+            onPressed: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => CustomerPage()),
+              );
+            },
+            child: Text('Go to package home page'),
+          ),
+        ],
+      ),
+    );
   }
 }
