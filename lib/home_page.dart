@@ -10,24 +10,33 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('My own home page'),
-        centerTitle: true,
+    return MaterialApp(
+      title: 'Flutter Demo - My own home page',
+      theme: ThemeData(
+        primarySwatch: Colors.green,
       ),
-      body: Column(
-        children: [
-          Text('My Home PAge'),
-          MaterialButton(
-            onPressed: () {
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (context) => CustomerPage()),
-              );
-            },
-            child: Text('Go to package home page'),
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('My own home page'),
+          centerTitle: true,
+        ),
+        body: Builder(
+          builder: (BuildContext context) => Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('My Home Page'),
+              MaterialButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => CustomerPage()),
+                  );
+                },
+                child: Text('Go to package page'),
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
