@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
-// import 'customer_page.dart';
-import 'home_page.dart';
+import 'home_menu.dart';
 
 void main() {
-  runApp(HomePage());
+  runApp(HomeMenu());
 }
